@@ -1,0 +1,13 @@
+=== Duplicate Detection Test ===
+str1 address: 0x1024a7de8
+str2 address: 0x1024a7de8
+str3 address: 0x1024a7df4
+✅ SUCCESS: str1 and str2 point to the same memory location!
+   Derleyici duplicate kontrolü çalışıyor.
+✅ SUCCESS: str1 and str3 point to different locations (as expected).
+
+=== Function Calls ===
+Hello World (function1)
+Hello World (function2)
+Hello World (function3)
+Goodbye World (function4)

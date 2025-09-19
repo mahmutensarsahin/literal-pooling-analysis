@@ -1,0 +1,55 @@
+=== C/C++ SABIT HAVUZU GERÇEK PERFORMANS TESTİ ===
+Bu test gerçek timing ölçümleri ile performans farkını gösterir.
+
+
+=== Bellek Kullanımı Testi ===
+📊 String Literal Analizi:
+   Toplam string sayısı: 50
+   Tekrarsız bellek kullanımı: 407 bytes
+   StringCopyApproach buffer: 65536 bytes
+   ConstantPoolApproach: 0 bytes (sadece .rodata referansları)
+
+=== GERÇEK PERFORMANS BENCHMARK'I ===
+Test parametreleri:
+   İterasyon sayısı: 1000000
+   String sayısı: 50
+
+--- String Copy Approach (❌ Kötü) ---
+⏱️  Süre: 330495 microseconds
+
+--- Constant Pool Approach (✅ İyi) ---
+⏱️  Süre: 85201 microseconds
+
+=== PERFORMANS KARŞILAŞTIRMA SONUÇLARI ===
+🚀 Constant Pool 3.879x daha hızlı
+📈 Performance iyileştirmesi: %74.2202
+
+📊 İşlem Hızı:
+   String Copy: 151.288 million ops/sec
+   Constant Pool: 586.848 million ops/sec
+
+=== STRING KARŞILAŞTIRMA BENCHMARK'I ===
+
+--- strcmp ile karşılaştırma ---
+⏱️  strcmp süresi: 1202906 microseconds
+🔍 Bulunan eşleşme: 0
+
+--- Pointer karşılaştırması (Constant Pool) ---
+⏱️  Pointer süresi: 165421 microseconds
+🔍 Bulunan eşleşme: 0
+
+🚀 Pointer karşılaştırması 7.27179x daha hızlı!
+
+=== BINARY SIZE ANALİZİ ===
+📦 String literal'lerin toplam boyutu: 407 bytes
+💾 .rodata bölümünde saklanıyor (ROM/Flash)
+🔄 Duplicate elimination uygulanıyor
+📱 RAM'da ek yer kaplamıyor
+
+📊 Buffer Approach vs Constant Pool:
+   Buffer yaklaşımı RAM gereksinimi: 12800 bytes
+   Constant pool RAM gereksinimi: 0 bytes
+   💰 RAM tasarrufu: 12800 bytes
+
+=== TEST TAMAMLANDI ===
+🎯 Sonuç: Constant Pool yaklaşımı hem bellek hem de performans açısından üstün!

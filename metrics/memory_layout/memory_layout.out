@@ -1,0 +1,81 @@
+=== Advanced Memory Layout Analysis ===
+Architecture: 64-bit
+sizeof(int): 4 bytes
+sizeof(double): 8 bytes
+sizeof(std::string): 24 bytes
+=== Global Constants Memory Layout ===
+📍 Addresses:
+GLOBAL_STRING: 0x1009037ec
+GLOBAL_INT: 0x100903f00
+GLOBAL_DOUBLE: 0x100903f08
+ERROR_MESSAGES: 0x100904110
+LOOKUP_TABLE: 0x100903ed8
+
+📊 Address Analysis:
+String literal range: 0x1009037ec
+Global int range: 0x100903f00
+Array range: 0x100904110
+✅ Global constants appear to be in the same section (.rodata)
+
+=== Local vs Global Constants ===
+🏠 Local addresses:
+local_string: 0x100903a0a
+local_int: 0x16f4fe8f4
+local_double: 0x16f4fe8e8
+local_array: 0x16f4fe900
+
+🌐 Global addresses:
+GLOBAL_STRING: 0x1009037ec
+GLOBAL_INT: 0x100903f00
+✅ Stack addresses are higher than .rodata (typical layout)
+📏 Address difference: 0x6ebfb108
+
+=== String Storage Strategy Analysis ===
+🔗 Literal deduplication test:
+literal1 == literal2: YES (same address)
+literal1 == literal3: NO (different address)
+
+📍 String object data locations:
+str1.data(): 0x16f4fe8f0
+str2.data(): 0x16f4fe8d8
+small_str.data(): 0x16f4fe8c0
+large_str.data(): 0x129605a60
+
+🔍 SSO Analysis:
+Small string uses SSO: YES
+Large string uses SSO: NO
+sizeof(std::string): 24 bytes
+
+=== Cache Layout Analysis ===
+🗂️ Sequential string addresses:
+String 1: 0x100903cc4
+String 2: 0x100903cce
+String 3: 0x100903cd8
+String 4: 0x100903ce2
+String 5: 0x100903cec
+String 6: 0x100903cf6
+String 7: 0x100903d00
+String 8: 0x100903d0a
+String 9: 0x100903d14
+String 10: 0x100903d1e
+String 11: 0x100903d28
+String 12: 0x100903d32
+String 13: 0x100903d3c
+String 14: 0x100903d46
+String 15: 0x100903d50
+String 16: 0x100903d5a
+
+📏 Address span: 150 bytes
+Cache lines used (64-byte lines): 3
+✅ All strings fit within ~1KB region (excellent cache locality)
+
+=== Memory Section Detection ===
+📂 Memory sections (typical order low to high):
+.text (code): 0x100901070
+.rodata: 0x100903e30
+.data: 0x100908008
+.bss: 0x10090800c
+heap: 0x129605cb0
+stack: 0x16f4fe914
+
+✅ Memory layout analysis complete

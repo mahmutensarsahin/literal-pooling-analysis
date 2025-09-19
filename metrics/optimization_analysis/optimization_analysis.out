@@ -1,0 +1,77 @@
+=== Compiler Optimization Deep Dive ===
+Compiled with: Optimization enabled
+Compiler: GCC 4.2
+
+=== Running Optimization Tests ===
+This message is used only once in the entire program
+Function 1: Common message used frequently
+Function 2: Common message used frequently
+Function 3: Common message used frequently
+
+--- Size-based optimization ---
+Tiny: OK
+Small: Warning
+Medium: Processing your request
+Large: This is a significantly larger message that contains much more text and definitely exceeds any reasonable inline threshold
+
+--- Numeric optimization ---
+Tiny number: 5
+Medium number: 74565
+Large number: 123456789abcdef0
+
+--- Template optimization ---
+Template message 1
+Template message 2
+Template message 3
+Default template message
+
+--- Repetition optimization ---
+Iteration 0: Common message used frequently
+Iteration 100: Common message used frequently
+Iteration 200: Common message used frequently
+Iteration 300: Common message used frequently
+Iteration 400: Common message used frequently
+Iteration 500: Common message used frequently
+Iteration 600: Common message used frequently
+Iteration 700: Common message used frequently
+Iteration 800: Common message used frequently
+Iteration 900: Common message used frequently
+
+=== String Access Pattern Benchmarks ===
+📊 Performance Results (average per operation):
+Direct literal access: 0.00 ns
+Function call: 0.00 ns
+Template call: 0.00 ns
+✅ Template calls optimized to direct access level
+✅ Function calls well optimized
+
+=== Optimization Analysis Report ===
+🔍 String deduplication check:
+common_1 address: 0x104bdf847
+common_2 address: 0x104bdf847
+different address: 0x104bdf866
+✅ String deduplication working (same address)
+
+🎯 Function addresses:
+function_common_use_1: 0x104bdd400
+function_common_use_2: 0x104bdd4b4
+template<1> func: 0x104bdd568
+template<2> func: 0x104bdd574
+
+=== Binary Section Analysis Hints ===
+To analyze the generated binary sections, use these commands:
+
+1. Section sizes:
+   size optimization_analysis
+
+2. .rodata content:
+   objdump -s -j .rodata optimization_analysis
+
+3. String literals:
+   strings optimization_analysis | head -20
+
+4. Assembly analysis:
+   objdump -d optimization_analysis | grep -A 5 -B 5 'get_.*_message'
+
+5. Symbol analysis:
+   nm optimization_analysis | grep -i rodata

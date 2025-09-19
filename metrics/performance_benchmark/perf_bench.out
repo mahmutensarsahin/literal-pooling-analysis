@@ -1,0 +1,23 @@
+=== Performance Benchmark: Inline vs .rodata ===
+Iterations: 1000000
+Messages per iteration: 10
+Total operations: 10000000
+
+📊 Results:
+.rodata approach: 0 microseconds
+Inline simulation: 0 microseconds
+
+💾 Memory Analysis:
+Inline approach estimated instruction overhead: ~1500 extra instructions per function
+.rodata approach: 1 instruction per string access
+
+=== Compile-Time Analysis ===
+String lengths (computed at compile time):
+"Short": 5 chars
+"This is a much longer string": 28 chars
+"OK": 2 chars
+
+Compiler decision simulation:
+"OK" (2 chars) → Likely inline candidate
+"Short" (5 chars) → Borderline, depends on usage
+"Long string" (28 chars) → Definitely .rodata
