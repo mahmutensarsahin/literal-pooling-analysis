@@ -5,6 +5,30 @@
 *.out
 *.app
 
+# Project-specific executable files
+web_server
+perf_bench
+duplicate_test
+embedded_sim
+perf_test
+assembly_test
+memory_layout
+game_perf
+size_test_*
+optimization_analysis
+
+# General executable patterns in metrics/
+metrics/**/web_server
+metrics/**/perf_bench
+metrics/**/duplicate_test
+metrics/**/embedded_sim
+metrics/**/perf_test
+metrics/**/assembly_test
+metrics/**/memory_layout
+metrics/**/game_perf
+metrics/**/size_test_*
+metrics/**/optimization_analysis
+
 # Debug files
 *.pdb
 *.ilk
