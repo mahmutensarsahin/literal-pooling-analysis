@@ -280,3 +280,14 @@ Aşağıdaki dosyalar doğrudan tabloya dökülebilir metrikler üretir. Hepsini
   - Üretilen metrikler: Literal pooling adres eşitliği (başarılı/başarısız)
 
 Toplu toplama: `scripts/collect_metrics.sh` çıktıları `metrics/results.csv` ve `metrics/README.md` olarak üretir.
+
+---
+
+## 📚 Ek Kaynaklar
+
+### 🔤 [Terim Sözlüğü (Glossary)](GLOSSARY.md)
+Projede kullanılan teknik terimler ve kavramların açıklamaları:
+- C++ compiler terminolojisi
+- Binary analysis araçları
+- Performance optimization terimleri
+- Memory management kavramları
